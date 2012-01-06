@@ -8,7 +8,10 @@ var db = mongo.db( mongoUri );
 var contacts = {
     add: function( firstName, lastName, requestCallback )
     {
-        addToDatabase( firstName, lastName, requestCallback );
+        db.collection( "contacts" ).insert( { "firstName": firstName, "lastName": lastName }, function(error, result)
+        {
+            requestCallback( null, "success" );
+        });
     }
 };
 
@@ -16,11 +19,3 @@ connect.createServer(
 
     require( 'connect-jsonrpc' )( contacts )
 ).listen( port );
-
-function addToDatabase( firstName, lastName, requestCallback )
-{
-    db.collection( "contacts" ).insert( { "firstName": firstName, "lastName": lastName }, function(error, result)
-    {
-        requestCallback( null, "success" );
-    });
-};
