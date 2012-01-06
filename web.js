@@ -19,5 +19,8 @@ connect.createServer(
 
 function addToDatabase( firstName, lastName, requestCallback )
 {
-    db.collection( "contacts" ).insert( { "firstName": firstName, "lastName": lastName } );
+    db.collection( "contacts" ).insert( { "firstName": firstName, "lastName": lastName }, function(error, result)
+    {
+        requestCallback( null, "success" );
+    });
 };
