@@ -4,6 +4,6 @@
   "dependencies": {
     "connect": "1.8.x",
     "connect-jsonrpc": "0.0.1",
-    "mongoose": "2.4.1"
+    "mongoskin": "0.2.3"
   }
 }
